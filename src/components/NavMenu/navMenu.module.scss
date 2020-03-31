@@ -1,0 +1,28 @@
+/* navMenu */
+.navMenu {
+  &__lista {}
+
+  @media (max-width: 610px) {
+    & {
+      text-align: center;
+    }
+  }
+
+  &__item {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__link {
+    padding: 14px 10px;
+    display: block;
+    cursor: pointer;
+  }
+
+  @media (max-width: 610px) {
+    &__link {
+      padding: 14px 7px;
+      font-size: 11px;
+    }
+  }
+}

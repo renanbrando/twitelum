@@ -1,5 +1,5 @@
 import React from 'react'
-import navMenuStyles from "./navMenu.module.css";
+import navMenuStyles from "./navMenu.module.scss";
 
 export default ({user}) => {
   return (

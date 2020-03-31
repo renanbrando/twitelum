@@ -1,0 +1,33 @@
+/* cabecalho */
+.cabecalho {
+  width: 100%;
+  background-color: #fff;
+
+  &__container {
+    padding: 0 15px;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 610px) {
+    &__container {
+      justify-content: center;
+    }
+  }
+
+  &__logo {
+    padding: 13px 0px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &__item {
+    display: inline-block;
+  }
+}

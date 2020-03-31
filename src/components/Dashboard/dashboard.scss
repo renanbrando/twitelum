@@ -1,0 +1,17 @@
+/* dashboard */
+.dashboard {
+  float: left;
+  width: 30%;
+  @media (max-width: 610px) {
+    & {
+      width: 100%;
+    }
+  }
+  @media (min-width: 611px) {
+    &__centro {
+      width: calc(70% - 15px);
+      margin-left: 15px;
+      float: right;
+    }
+  }
+}

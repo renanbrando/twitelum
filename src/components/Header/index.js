@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import "./header.css"
+import headerStyles from "./header.module.scss"
  
 
 export default class Header extends Component {
   render() {
     return (
-      <header className="cabecalho">
-        <div className="cabecalho__container container">
-          <h1 className="cabecalho__logo">
+      <header className={headerStyles.cabecalho}>
+        <div className={[headerStyles.cabecalho__container]}>
+          <h1 className={headerStyles.cabecalho__logo}>
             <a href="/">Twitelum</a>
           </h1>
           { this.props.children }

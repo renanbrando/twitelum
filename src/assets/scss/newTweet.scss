@@ -1,0 +1,58 @@
+/* novoTweet */
+.novoTweet {
+  &:after {
+    content: "";
+    clear: both;
+    width: 100%;
+    display: block;
+  }
+
+  &__editorArea {
+  
+  }
+
+  &__editor {
+    width: 100%;
+    transition: height .2s;
+    border: 1px solid #ABE6F8;
+    border-radius: 4px;
+    resize: none;
+    padding: 8px;
+    height: 40px;
+    font-size: 11px;
+  }
+
+  &__editor:not(:empty),
+  &__editor:focus {
+    height: 80px;
+    box-shadow: 0 0 0 1px #ABE6F8;
+    outline: 0;
+  }
+  
+  &__status {
+    float: right;
+    font-size: 14px;
+    margin-bottom: 7px;
+  }
+  
+  &__status--invalido {
+    color: red;
+  }
+  
+  &__envia {
+    float: right;
+    color: white;
+    background-color: #58CEF2;
+    border-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    padding: 5px 11px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+}
