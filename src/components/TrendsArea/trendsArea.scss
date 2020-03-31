@@ -1,0 +1,16 @@
+/* trends */
+.trendsArea {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+
+  &__titulo {
+    text-align: center;
+    line-height: 48px;
+  }
+
+  &__lista {
+    list-style: none;
+  }
+}

@@ -1,5 +1,9 @@
 /* novoTweet */
 .novoTweet {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  
   &:after {
     content: "";
     clear: both;
