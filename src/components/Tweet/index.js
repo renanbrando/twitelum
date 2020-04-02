@@ -11,7 +11,8 @@ class Tweet extends Component {
                     <a href="/"><span className="tweet__userName">@usuario</span></a>
                 </div>
                 <p className="tweet__conteudo">
-                    <span>Lorem, ipsum dolor sit <a href="/trends/#amet" data-reactroot="">#amet</a> consectetur adipisicing <a href="/trends/#elit" data-reactroot="">#elit</a>. Adipisci ut cumque tempora? Quam velit vitae voluptatum tempora iste, mollitia, sa</span>
+                    {/*<span>Lorem, ipsum dolor sit <a href="/trends/#amet" data-reactroot="">#amet</a> consectetur adipisicing <a href="/trends/#elit" data-reactroot="">#elit</a>. Adipisci ut cumque tempora? Quam velit vitae voluptatum tempora iste, mollitia, sa</span> */}
+                    <span>{ this.props.text}</span>
                 </p>
                 <footer className="tweet__footer">
                     <button className="btn btn--clean">

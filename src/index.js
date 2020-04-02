@@ -1,20 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from "react-router-dom";
+import Routes from './routes'
+import { NotificationContextProvider } from './contexts/NotificationContext'
+import * as serviceWorker from './serviceWorker'
 // CSSs Globais
-import "./assets/scss/reset.scss";
-import "./assets/scss/container.scss";
-import "./assets/scss/btn.scss";
-import "./assets/scss/icon.scss";
-import "./assets/scss/iconHeart.scss";
-import "./assets/scss/notification.scss";
-import "./assets/scss/newTweet.scss";
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import "./assets/scss/reset.scss"
+import "./assets/scss/container.scss"
+import "./assets/scss/btn.scss"
+import "./assets/scss/icon.scss"
+import "./assets/scss/iconHeart.scss"
+import "./assets/scss/notification.scss"
+import "./assets/scss/newTweet.scss"
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <NotificationContextProvider>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+  </NotificationContextProvider>,
   document.getElementById('root')
 );
 

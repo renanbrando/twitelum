@@ -1,17 +1,28 @@
 import React, { Component, Fragment } from 'react'
-import Header from './components/Header'
-import NavMenu from './components/NavMenu'
-import Dashboard from './components/Dashboard'
-import Widget from './components/Widget'
-import TrendsArea from './components/TrendsArea'
-import Tweet from './components/Tweet'
+import Header from '../../components/Header'
+import NavMenu from '../../components/NavMenu'
+import Dashboard from '../../components/Dashboard'
+import Widget from '../../components/Widget'
+import TrendsArea from '../../components/TrendsArea'
+import Tweet from '../../components/Tweet'
 
-class App extends Component {
+class Home extends Component {
 
   constructor() {
     super()
     this.state = {
-      newTweet: ''
+      newTweet: '',
+      tweets: []
+    }
+  }
+
+  addNewTweet = (e) => {
+    e.preventDefault()
+    if (this.state.newTweet.length > 0) {
+      this.setState({
+        tweets: [this.state.newTweet, ...this.state.tweets],
+        newTweet: ""
+      });
     }
   }
 
@@ -24,7 +35,7 @@ class App extends Component {
         <div className="container">
           <Dashboard>
             <Widget>
-              <form className="novoTweet">
+              <form className="novoTweet" onSubmit={ this.addNewTweet }>
                 <div className="novoTweet__editorArea">
                   <span
                     className={
@@ -61,7 +72,22 @@ class App extends Component {
           <Dashboard posicao="centro">
             <Widget>
               <div className="tweetsArea">
-                <Tweet />
+                { this.state.tweets.length > 0  ?
+                  (
+                    this.state.tweets.map(
+                      (tweet, index) => {
+                        return <Tweet 
+                          key={index}
+                          text={tweet}
+                        />
+                      }
+                    )
+                  )
+                  : 
+                  (
+                    <p className="tweetsArea--text">Acione um tweet para começar :)</p>
+                  )
+                }
               </div>
             </Widget>
           </Dashboard>
@@ -71,4 +97,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;
