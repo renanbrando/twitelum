@@ -1,7 +1,15 @@
 import React from 'react'
-import navMenuStyles from "./navMenu.module.scss";
+import { useHistory } from "react-router-dom";
+import navMenuStyles from "./navMenu.module.scss"
 
 export default ({user}) => {
+  const history = useHistory()
+
+  const logout = () => {
+    localStorage.clear()
+    history.push('/login')
+  }
+
   return (
     <nav className={navMenuStyles.navMenu}>
       <ul className={navMenuStyles.navMenu__lista}>
@@ -22,7 +30,8 @@ export default ({user}) => {
           </a>
         </li>
         <li className={navMenuStyles.navMenu__item}>
-          <a className={navMenuStyles.navMenu__link} href="/logout">
+          {/* eslint-disable-next-line */}
+          <a className={navMenuStyles.navMenu__link} onClick={logout}>
             Logout
           </a>
         </li>
