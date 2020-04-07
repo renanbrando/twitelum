@@ -5,7 +5,7 @@ import Dashboard from '../../components/Dashboard'
 import Widget from '../../components/Widget'
 import TrendsArea from '../../components/TrendsArea'
 import Tweet from '../../components/Tweet'
-import api from '../../api'
+//import api from '../../api'
 import Helmet from 'react-helmet'
 
 class Home extends Component {
@@ -54,6 +54,18 @@ class Home extends Component {
       });
     }
   }
+
+  removeTweet = (idTweetQueVaiSerRemovido) => {
+    console.log(idTweetQueVaiSerRemovido);
+    fetch(`https://twitelum-api.herokuapp.com/tweets/${idTweetQueVaiSerRemovido}?X-AUTH-TOKEN=${localStorage.getItem('token')}`, {
+      method: 'DELETE'
+    }).then(data => data.json()).then(response => {
+      const listaDeTweetsAtualizada = this.state.tweets.filter(tweet => tweet._id !== idTweetQueVaiSerRemovido);
+      this.setState({
+        tweets: listaDeTweetsAtualizada
+      });
+    });
+  };
 
   render () {
     return (
@@ -107,10 +119,16 @@ class Home extends Component {
                 { this.state.tweets.length > 0  ?
                   (
                     this.state.tweets.map(
-                      (tweet, index) => {
+                      (tweetInfo, index) => {
                         return <Tweet 
-                          key={index}
-                          tweet={tweet}
+                          key={tweetInfo._id}
+                          id={tweetInfo._id}
+                          texto={tweetInfo.conteudo}
+                          usuario={tweetInfo.usuario}
+                          likeado={tweetInfo.likeado}
+                          totalLikes={tweetInfo.totalLikes}
+                          removivel={tweetInfo.removivel}
+                          removeHandler={(event) => this.removeTweet(tweetInfo._id)} 
                         />
                       }
                     )
