@@ -19,10 +19,16 @@ class Home extends Component {
   }
 
   componentDidMount () {
+    window.store.subscribe(() => {
+      this.setState({
+        tweets: window.store.getState()
+      })
+    })
     fetch(`https://twitelum-api.herokuapp.com/tweets?X-AUTH-TOKEN=${localStorage.getItem('token')}`).then(response =>
       response.json()
     ).then(tweets => 
-      this.setState({tweets})
+      //this.setState({tweets})
+      window.store.dispatch({type: 'CARREGA_TWEETS', tweets})
     );
   }
 

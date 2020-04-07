@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import Routes from './routes'
 import { NotificationContextProvider } from './contexts/NotificationContext'
 import * as serviceWorker from './serviceWorker'
+import './store'
 // CSSs Globais
 import "./assets/scss/reset.scss"
 import "./assets/scss/container.scss"
