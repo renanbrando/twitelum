@@ -87,7 +87,7 @@ class LoginPage extends Component {
             <Fragment>
                 <Header />
                 <div className="loginPage">
-                    <div className="container">
+                    <div className="container__login">
                         <Widget>
                             <h2 className="loginPage__title">Seja bem vindo!</h2>
                             <FormManager

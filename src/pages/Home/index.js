@@ -18,13 +18,39 @@ class Home extends Component {
     }
   }
 
+  componentDidMount () {
+    fetch(`https://twitelum-api.herokuapp.com/tweets?X-AUTH-TOKEN=${localStorage.getItem('token')}`).then(response =>
+      response.json()
+    ).then(tweets => 
+      this.setState({tweets})
+    );
+  }
+
   addNewTweet = (e) => {
     e.preventDefault()
     if (this.state.newTweet.length > 0) {
-      api.post('/tweets')
-      this.setState({
-        tweets: [this.state.newTweet, ...this.state.tweets],
-        newTweet: ""
+      /*api.post('/tweets', {
+        conteudo: this.state.newTweet
+      }).then(res => {
+        this.setState({
+          tweets: [res.data, ...this.state.tweets],
+          newTweet: ""
+        })
+      })*/
+      fetch(`https://twitelum-api.herokuapp.com/tweets?X-AUTH-TOKEN=${localStorage.getItem('token')}`, {
+        method: 'POST',
+        headers: {},
+        'Content-type': 'application/json',
+        body: JSON.stringify({
+          conteudo: this.state.newTweet
+        })
+      }).then(respostaDoServer => {
+        return respostaDoServer.json();
+      }).then(tweetVindoDoServidor => {
+        console.log(tweetVindoDoServidor);
+        this.setState({
+          tweets: [tweetVindoDoServidor, ...this.state.tweets]
+        });
       });
     }
   }
@@ -33,7 +59,7 @@ class Home extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>Twitelum - Renan</title>
+          <title>Twitelum - ({`${this.state.tweets.length}`})</title>
         </Helmet>
         <Header>
           <NavMenu user="@renabrando" />
@@ -84,7 +110,7 @@ class Home extends Component {
                       (tweet, index) => {
                         return <Tweet 
                           key={index}
-                          text={tweet}
+                          tweet={tweet}
                         />
                       }
                     )
