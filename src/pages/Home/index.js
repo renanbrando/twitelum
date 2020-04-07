@@ -5,6 +5,8 @@ import Dashboard from '../../components/Dashboard'
 import Widget from '../../components/Widget'
 import TrendsArea from '../../components/TrendsArea'
 import Tweet from '../../components/Tweet'
+import api from '../../api'
+import Helmet from 'react-helmet'
 
 class Home extends Component {
 
@@ -19,6 +21,7 @@ class Home extends Component {
   addNewTweet = (e) => {
     e.preventDefault()
     if (this.state.newTweet.length > 0) {
+      api.post('/tweets')
       this.setState({
         tweets: [this.state.newTweet, ...this.state.tweets],
         newTweet: ""
@@ -29,6 +32,9 @@ class Home extends Component {
   render () {
     return (
       <Fragment>
+        <Helmet>
+          <title>Twitelum - Renan</title>
+        </Helmet>
         <Header>
           <NavMenu user="@renabrando" />
         </Header>
