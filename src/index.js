@@ -4,7 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import Routes from './routes'
 import { NotificationContextProvider } from './contexts/NotificationContext'
 import * as serviceWorker from './serviceWorker'
-import './store'
+//import './store'
+import store from "./store/index"
+import { Provider } from "react-redux"
 // CSSs Globais
 import "./assets/scss/reset.scss"
 import "./assets/scss/container.scss"
@@ -15,11 +17,13 @@ import "./assets/scss/notification.scss"
 import "./assets/scss/newTweet.scss"
 
 ReactDOM.render(
-  <NotificationContextProvider>
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
-  </NotificationContextProvider>,
+  <Provider store={store}>
+    <NotificationContextProvider>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </NotificationContextProvider>
+  </Provider>,
   document.getElementById('root')
 );
 
